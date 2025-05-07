@@ -1,0 +1,672 @@
+/* ==UserStyle==
+@name           Houfy Custom Styles
+@namespace      github.com/jjkaye
+@version        1.0.0
+@description    Custom CSS for my short-term rental listing on Houfy
+@author         Jenever Holdings
+@homepageURL    https://skyforestgetaway.com
+==/UserStyle== */
+
+/* FONT DEFINITION */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Danfo&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+.jetbrains-mono-oakmont {
+  font-family: "JetBrains Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.dm-sans-oakmont {
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.col-md-12 {
+  font-family: "JetBrains Mono" !important;
+  font-size: 14px !important;
+  line-height: 24px !important;
+}
+span.city {
+  text-transform: uppercase;
+  color: #a1a0a0;
+  margin-top: 12px;
+  display: block;
+}
+
+/* HEADINGS */
+div.houfy-tmplates-section h1,
+div.houfy-tmplates-section h2,
+div.houfy-tmplates-section h3,
+div.houfy-tmplates-section h4 {
+  font-family: "DM Sans" !important;
+  font-optical-sizing: auto;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+div.houfy-tmplates-section p {
+  font-family: "JetBrains Mono" !important;
+  font-weight: 300 !important;
+  font-style: normal;
+}
+
+div.houfy-tmplates-section h1 {
+  font-size: 42px !important;
+  line-height: 48px !important;
+}
+
+div.houfy-tmplates-section h2 {
+  font-size: 30px !important;
+  line-height: 36px !important;
+  padding-top: 36px !important;
+}
+
+div.houfy-tmplates-section h3 {
+  font-size: 18px !important;
+  line-height: 18px !important;
+  padding: 18px 0px !important;
+}
+
+/* LISTING */
+div.houfy-tmplates-section h1.oakmont {
+  text-align: left;
+}
+
+div.houfy-tmplates-section p {
+  padding: 20px 0px;
+}
+
+/* ARTICLE */
+.article {
+  max-width: 768px;
+  margin: auto !important;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+article.hero {
+  text-align: center !important;
+}
+
+.article.hero h1 {
+  margin: 30px 0px !important;
+}
+
+.article.hero p {
+  padding: 0px;
+}
+
+.article a {
+  color: #df9518 !important;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.article time {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a1a0a0;
+  padding-top: 24px;
+  display: block;
+}
+
+/* General UL/OL Styling Inside Article */
+.article ul,
+.article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+  color: #374151;
+  /* subtle dark gray */
+  line-height: 1.6;
+}
+
+/* Bullets for unordered lists */
+.article ul {
+  list-style-type: disc;
+}
+
+/* Numbers for ordered lists */
+.article ol {
+  list-style-type: decimal;
+}
+
+/* List Item Styling */
+.article li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+/* Optional: Emphasize first word or phrase */
+.article li strong:first-child {
+  color: #111;
+}
+
+/* Subtle Table of Contents */
+div.houfy-tmplates-section .toc-wrapper {
+  margin: 2rem 0;
+  font-size: 16px !important;
+  border-top: 1px #a1a0a0 solid;
+  font-family: "DM Sans", serif !important;
+}
+
+div.houfy-tmplates-section .toc-wrapper h3 {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 16px !important;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+div.houfy-tmplates-section .toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+div.houfy-tmplates-section .toc a {
+}
+
+div.houfy-tmplates-section .toc li {
+  margin-bottom: 0.25rem;
+}
+
+/* HORIZONTAL RULES */
+/*.col-md-12.wsectionitem:not([data-section="130532"]):not([data-section="130550"]):not([data-section="130726"]):not([data-section="130552"]):not([data-section="130530"]) {
+        border-bottom: 1px solid #e6e6e6;
+        padding: 12px 0 36px 0;
+    }*/
+.col-md-12.wsectionitem {
+  border: none !important;
+}
+
+hr {
+  margin-top: 42px;
+  margin-bottom: 36px;
+}
+
+/* BULLET STYLES */
+ul.bullet-oakmont li {
+  text-indent: 12px;
+  height: 36px;
+  line-height: 12px;
+}
+
+ul.bullet-oakmont li {
+  list-style-image: url('data:image/svg+xml,<svg transform="scale(1) translate(0, 0)" transform-origin="center" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="8" fill="%23FFE381"/><path d="M11.4757 5.00433C11.3729 5.01916 11.2781 5.06825 11.2066 5.14367C9.65712 6.69652 8.24544 8.23041 6.72907 9.76535L4.74972 8.18475C4.70241 8.14688 4.64809 8.11871 4.58989 8.10184C4.53169 8.08497 4.47073 8.07973 4.4105 8.08642C4.35027 8.09311 4.29195 8.1116 4.23886 8.14083C4.18578 8.17006 4.13897 8.20946 4.10111 8.25678C4.06326 8.3041 4.03509 8.35841 4.01823 8.41662C4.00136 8.47482 3.99613 8.53579 4.00282 8.59602C4.00952 8.65624 4.02801 8.71456 4.05725 8.76765C4.08648 8.82073 4.12589 8.86753 4.17321 8.90538L6.47925 10.7502C6.56846 10.8207 6.68058 10.8558 6.79408 10.8487C6.90758 10.8416 7.01446 10.7929 7.09419 10.7118C8.74353 9.0589 10.2296 7.42612 11.86 5.79223C11.9298 5.72452 11.9763 5.63651 11.9931 5.54076C12.0099 5.445 11.9959 5.3464 11.9533 5.25903C11.9107 5.17166 11.8416 5.09999 11.7558 5.05425C11.67 5.00851 11.572 4.99104 11.4757 5.00433Z" fill="black"/></svg>');
+  /* Use translate(X, Y) to position the SVG up, down, left, and right */
+}
+
+ul.bullet-oakmont {
+  padding-left: 20px;
+}
+
+ul.bullet-oakmont li span {
+  vertical-align: 0.2em;
+  transform: translate(-0.1em, 0.2em);
+}
+
+ul.bullet-oakmont li::marker {
+  font-size: 3.6em;
+}
+
+/* SLEEPING */
+/* REVIEW SECTION */
+/*.hreviews-top-section > .col-md-12:first-of-type > .col-md-12[style*="overflow-x: auto"] {
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+    }*/
+.hreviews-top-section,
+.label-blue,
+.Viewlisting_flex_col_modile_6__6Evet div:has(> .image-placeholder) {
+  display: none;
+}
+
+.col-md-12 b {
+  font-family: "DM Sans", sans-serif;
+}
+
+.col-md-12.margin-top-10 .label-grey span {
+  display: inline-block;
+  /* Ensure it behaves like an image container */
+  width: 120px;
+  /* Adjust the width as needed */
+  height: 24px;
+  /* Adjust the height as needed */
+  background-image: url("https://i0.wp.com/mohamadfaizal.com/wp-content/uploads/2017/05/logo-airbnb-404px-grey-1.png");
+  background-size: contain;
+  /* Scale the image to fit */
+  background-repeat: no-repeat;
+  color: transparent;
+  /* Hide the text */
+  text-indent: -9999px;
+  /* Move text offscreen for accessibility */
+  overflow: hidden;
+}
+
+/* Main container */
+#guest-review-summary.rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  /* Replace with your desired font */
+  background-color: #f8f6f1;
+  /* White background */
+  padding: 40px;
+  /* Add inner spacing */
+  border-radius: 8px;
+  /* Smooth rounded corners */
+  margin: 0 auto;
+  /* Center align on page */
+}
+
+/* Rating number */
+#guest-review-summary .rating-number {
+  font-size: 60px;
+  /* Large, bold number */
+  font-weight: bold;
+  color: #000;
+  /* Black text */
+  margin: 20px 0px;
+  /* Spacing below the number */
+}
+
+/* Stars container */
+#guest-review-summary .rating-stars {
+  display: flex;
+  gap: 4px;
+  margin: 10px 0px;
+}
+
+#guest-review-summary .rating-stars img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Review text */
+#guest-review-summary .rating-text {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  line-height: 1.5;
+  background: none;
+  font-weight: normal;
+}
+
+#guest-review-summary .rating-text:before {
+  display: none;
+}
+
+.Viewlisting_flex_col_modile_6__6Evet {
+  background-color: #f8f6f1;
+  box-shadow: none;
+}
+
+.col-md-12 .showmore1 span {
+  text-transform: capitalize;
+  font-weight: normal;
+}
+
+/* CALENDAR */
+.Calendar_day_outer__URkUv.blocked_day:not(.blocked_daybefore) {
+  background: #e8e8e8 !important;
+  /* Set a solid gray background */
+  border: none !important;
+  /* Add a solid border */
+  color: #808080 !important;
+  /* Gray text */
+  cursor: not-allowed;
+  /* Disable interaction */
+  background-image: none !important;
+  /* Remove any background gradients or patterns */
+}
+
+.Calendar_day_outer__URkUv.blocked_day:not(.blocked_daybefore) span {
+  color: #666 !important;
+  /* Ensure text is visible but gray */
+}
+
+.Calendar_week_header_outer__dGC9Y {
+  display: flex;
+  /* Ensure proper layout */
+  align-items: center;
+  /* Center-align items vertically */
+  justify-content: center;
+  /* Center-align items horizontally */
+  height: auto;
+  /* Allow the height to adjust dynamically */
+  padding: 20px 0;
+  /* Add space inside the container */
+  box-sizing: border-box;
+  /* Ensure padding doesn't cause overflow */
+}
+
+.Calendar_week_header_outer__dGC9Y span {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  /* Apply DM Sans font */
+  font-size: 10px;
+  /* Set font size */
+  line-height: 1.2;
+  /* Prevent overlap by setting proper line height */
+  text-align: center;
+  /* Center-align text */
+  color: #222;
+  /* Adjust text color if necessary */
+}
+
+/* Unique Review Box */
+#guest-review-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: "DM Sans", sans-serif;
+  background-color: #fff;
+  gap: 16px;
+  margin: 18px 0 30px 0;
+}
+
+/* Left Section: Guest Favorite + Description */
+#guest-review-section .review-left {
+  display: flex;
+  flex-direction: row;
+  /* Changed to row for inline layout */
+  align-items: center;
+  /* Vertically center-align content */
+  gap: 32px;
+  /* Space between guest-favorite and guest-review */
+  flex: 1;
+  width: 60px;
+}
+
+/* Guest Favorite Section */
+#guest-review-section .guest-favorite {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 0px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 16px;
+  position: relative;
+  width: 120px;
+  /* Set a fixed width */
+  justify-content: space-between;
+  /* Ensures spacing between the text and leaves */
+  /* Centers the text within the fixed width */
+}
+
+/* Left Leaf (::before) */
+#guest-review-section .guest-favorite::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/svg+xml,<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="53.08 69.63 268.91 502.32"><g id="svgg"><path id="path0" d="M138.259 80.569 C 103.486 112.189,91.865 138.795,96.933 175.185 C 98.118 183.695,97.628 184.709,92.767 183.814 C 68.589 179.362,67.957 179.640,61.727 197.504 C 46.644 240.747,51.291 276.408,75.679 304.587 C 83.046 313.099,82.879 313.561,70.706 318.386 C 56.529 324.004,56.869 323.288,59.937 341.052 C 68.161 388.665,96.237 421.962,135.185 430.296 C 140.883 431.515,140.352 433.411,131.092 444.914 C 121.182 457.226,121.113 455.303,131.942 468.763 C 172.326 518.963,230.734 528.034,276.028 491.138 C 287.726 481.609,289.519 482.303,290.060 496.571 C 290.991 521.104,275.310 537.753,248.431 540.772 C 225.007 543.402,219.249 567.958,241.279 571.268 C 290.950 578.729,334.507 524.036,318.685 474.074 C 308.638 442.347,264.152 405.593,228.919 399.909 C 216.044 397.832,215.860 397.672,212.874 385.926 C 206.187 359.626,194.739 341.341,175.613 326.416 L 169.745 321.837 172.513 310.178 C 177.899 287.497,177.665 259.751,172.000 249.165 C 169.130 243.803,170.180 241.394,179.766 231.337 C 202.808 207.165,211.427 185.725,210.047 156.012 C 209.121 136.073,205.817 127.017,190.713 103.029 C 184.474 93.120,157.977 69.630,153.038 69.630 C 151.526 69.630,144.875 74.552,138.259 80.569 M160.834 116.316 C 184.553 141.786,185.357 176.639,162.851 203.704 C 153.919 214.446,151.013 213.993,141.236 200.341 C 121.241 172.417,122.287 145.214,144.402 118.066 C 152.677 107.907,152.974 107.875,160.834 116.316 M109.418 222.716 C 137.957 236.894,151.470 267.061,143.486 298.771 L 141.786 305.521 135.708 304.834 C 106.977 301.585,85.185 274.259,85.185 241.481 C 85.186 213.709,87.571 211.862,109.418 222.716 M137.992 342.185 C 160.588 349.207,184.427 377.330,181.988 394.089 C 180.607 403.579,146.413 403.855,127.606 394.527 C 111.378 386.478,94.643 363.261,94.218 348.209 C 93.980 339.755,119.064 336.303,137.992 342.185 M233.567 432.749 C 247.578 438.403,265.179 450.607,266.355 455.483 C 267.116 458.634,252.170 471.075,241.452 476.211 C 217.951 487.473,191.262 483.059,170.790 464.525 C 162.229 456.774,162.877 453.810,175.105 444.779 C 194.108 430.744,216.950 426.044,233.567 432.749 " stroke="none" fill="%23000000" fill-rule="evenodd"></path></g></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Right Leaf (::after) */
+#guest-review-section .guest-favorite::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/svg+xml,<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="53.08 69.63 268.91 502.32"><g id="svgg"><path id="path0" d="M138.259 80.569 C 103.486 112.189,91.865 138.795,96.933 175.185 C 98.118 183.695,97.628 184.709,92.767 183.814 C 68.589 179.362,67.957 179.640,61.727 197.504 C 46.644 240.747,51.291 276.408,75.679 304.587 C 83.046 313.099,82.879 313.561,70.706 318.386 C 56.529 324.004,56.869 323.288,59.937 341.052 C 68.161 388.665,96.237 421.962,135.185 430.296 C 140.883 431.515,140.352 433.411,131.092 444.914 C 121.182 457.226,121.113 455.303,131.942 468.763 C 172.326 518.963,230.734 528.034,276.028 491.138 C 287.726 481.609,289.519 482.303,290.060 496.571 C 290.991 521.104,275.310 537.753,248.431 540.772 C 225.007 543.402,219.249 567.958,241.279 571.268 C 290.950 578.729,334.507 524.036,318.685 474.074 C 308.638 442.347,264.152 405.593,228.919 399.909 C 216.044 397.832,215.860 397.672,212.874 385.926 C 206.187 359.626,194.739 341.341,175.613 326.416 L 169.745 321.837 172.513 310.178 C 177.899 287.497,177.665 259.751,172.000 249.165 C 169.130 243.803,170.180 241.394,179.766 231.337 C 202.808 207.165,211.427 185.725,210.047 156.012 C 209.121 136.073,205.817 127.017,190.713 103.029 C 184.474 93.120,157.977 69.630,153.038 69.630 C 151.526 69.630,144.875 74.552,138.259 80.569 M160.834 116.316 C 184.553 141.786,185.357 176.639,162.851 203.704 C 153.919 214.446,151.013 213.993,141.236 200.341 C 121.241 172.417,122.287 145.214,144.402 118.066 C 152.677 107.907,152.974 107.875,160.834 116.316 M109.418 222.716 C 137.957 236.894,151.470 267.061,143.486 298.771 L 141.786 305.521 135.708 304.834 C 106.977 301.585,85.185 274.259,85.185 241.481 C 85.186 213.709,87.571 211.862,109.418 222.716 M137.992 342.185 C 160.588 349.207,184.427 377.330,181.988 394.089 C 180.607 403.579,146.413 403.855,127.606 394.527 C 111.378 386.478,94.643 363.261,94.218 348.209 C 93.980 339.755,119.064 336.303,137.992 342.185 M233.567 432.749 C 247.578 438.403,265.179 450.607,266.355 455.483 C 267.116 458.634,252.170 471.075,241.452 476.211 C 217.951 487.473,191.262 483.059,170.790 464.525 C 162.229 456.774,162.877 453.810,175.105 444.779 C 194.108 430.744,216.950 426.044,233.567 432.749 " stroke="none" fill="%23000000" fill-rule="evenodd"></path></g></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  /* Flips the SVG horizontally */
+}
+
+/* Guest Review Description */
+#guest-review-section .guest-review {
+  font-size: 16px;
+  color: #222;
+  line-height: 20px;
+}
+
+/* Rating Section */
+#guest-review-section .rating-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Rating Box */
+#guest-review-section .rating-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  border: none;
+}
+
+#guest-review-section .rating-group .stars {
+  font-size: 12px;
+  color: #fbb034;
+}
+
+/* Divider */
+#guest-review-section .divider {
+  height: 48px;
+  width: 1px;
+  background-color: #e0e0e0;
+}
+
+/* Review Count */
+#guest-review-section .review-count {
+  text-align: center;
+}
+
+#guest-review-section .review-count .count {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+#guest-review-section .review-count .label {
+  font-size: 12px;
+  color: #888;
+}
+
+/* BOOK SECTION */
+#airbnb-price-section {
+  padding-top: 10px;
+}
+
+#airbnb-price-section .flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#airbnb-price-section .price-label {
+  color: #999;
+  font-weight: bold;
+}
+
+#airbnb-price-section .crossed-price {
+  text-decoration: line-through;
+  color: #999;
+  font-weight: bold;
+}
+
+#airbnb-price-section .direct-booking-row {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#airbnb-price-section .direct-booking-row .text-left {
+  color: #009900;
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+
+#airbnb-price-section .direct-booking-row .text-right {
+  font-weight: bold;
+  color: #009900;
+  padding-bottom: 0px;
+  /* Optional: Green text for discount */
+}
+
+#airbnb-price-section .additional-savings-row {
+  font-size: 12px;
+  color: #009900;
+  text-transform: uppercase;
+}
+
+#airbnb-price-section .additional-savings-row .text-left {
+  padding-top: 0px;
+}
+
+.dates-label {
+  font-size: 10px !important;
+  text-transform: uppercase;
+}
+
+.hdates_daterangeinputs .col-xs-6:first-child {
+  border-right: #e0e0e0 1px solid;
+}
+
+span[style*="color: var(--green-color);"][style*="font-weight: bold;"] {
+  color: #009900 !important;
+}
+
+/* Base Mobile Styles */
+@media (max-width: 768px) {
+  div.houfy-tmplates-section h1.oakmont {
+    font-size: 36px !important;
+    line-height: 36px !important;
+    margin: 18px 0 6px 0 !important;
+  }
+
+  div.houfy-tmplates-section h1.blog {
+    font-size: 30px !important;
+    line-height: 36px !important;
+    text-align: left;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  div.houfy-tmplates-section p.blog {
+    text-align: left;
+  }
+
+  /* Review Box */
+  #guest-review-section {
+    display: flex;
+    align-items: center;
+    /* Vertically align all elements */
+    justify-content: space-between;
+    /* Default spacing */
+    padding: 24px;
+    margin: 6px 0 24px 0;
+    /* Adjust padding */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: "DM Sans", sans-serif;
+    background-color: #fff;
+    gap: 16px;
+    /* Space between sections */
+    position: relative;
+    /* Allows absolute positioning */
+  }
+
+  /* Guest Favorite Section */
+  #guest-review-section .review-left {
+    display: flex;
+    flex-direction: row;
+    /* Keep content horizontal */
+    align-items: center;
+    /* Vertically align content */
+    gap: 8px;
+    /* Small spacing */
+    width: auto;
+    /* Adjust width dynamically */
+    flex-shrink: 1;
+    /* Allow shrinking if needed */
+  }
+
+  #guest-review-section .guest-favorite::before,
+  #guest-review-section .guest-favorite::after {
+    width: 24px;
+  }
+
+  #guest-review-section .rating-group .score,
+  #guest-review-section .rating-group .stars,
+  #guest-review-section .review-count .count,
+  #guest-review-section .review-count .label {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  #guest-review-section .guest-favorite {
+    width: auto;
+    /* No fixed width */
+    gap: 4px;
+    /* Smaller gap for leaves */
+  }
+
+  /* Hide Guest Review Description */
+  #guest-review-section .guest-review {
+    display: none;
+    /* Hide the description to save space */
+  }
+
+  /* Rating Section */
+  #guest-review-section .rating-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* Smaller spacing between rating and review count */
+    flex-shrink: 1;
+    /* Allow the section to shrink if needed */
+  }
+
+  /* Rating */
+  #guest-review-section .rating-group {
+    /* Reduce size of the rating */
+    /* Smaller text size */
+    text-align: center;
+  }
+
+  #guest-review-section .rating-group .score,
+  #guest-review-section .review-count .count {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  /* Divider */
+  #guest-review-section .divider {
+    height: 36px;
+    /* Shorter divider */
+    width: 1px;
+    background-color: #e0e0e0;
+  }
+
+  /* Review Count */
+  #guest-review-section .review-count {
+    display: flex;
+    flex-direction: column;
+    /* Keep text stacked within this block */
+    align-items: flex-start;
+    align-items: center;
+  }
+}
