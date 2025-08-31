@@ -1,0 +1,20 @@
+name = "houfy-prod-proxy"
+main = "workers/houfy-prod-proxy.js"
+compatibility_date = "2025-08-25"
+
+account_id = "34c3d57ed1b72bfcee734c13ddbeedaa"
+workers_dev = false
+
+# Routes for your live site
+routes = [
+  { pattern = "skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" },
+  { pattern = "www.skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" }
+]
+
+[vars]
+CDN_URL = "https://cdn.skyforestgetaway.com/public/"
+
+# 🔹 KV binding for sitemap.xml
+[[kv_namespaces]]
+binding = "SITEMAP_KV_PROD"
+id = "8079af69a07040138732036f6b494682"

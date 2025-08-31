@@ -1,3 +1,5 @@
+/* DEV MARKER 8/25 6:55 PM */
+
 /* ==UserStyle==
 @name           Houfy Custom Styles
 @namespace      github.com/jjkaye
@@ -7,8 +9,11 @@
 @homepageURL    https://skyforestgetaway.com
 ==/UserStyle== */
 
+body {
+  background: green !important;
+}
+
 /* FONT DEFINITION */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Danfo&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 .jetbrains-mono-oakmont {
   font-family: "JetBrains Mono", serif;
@@ -72,6 +77,7 @@ div.houfy-tmplates-section h3 {
 /* LISTING */
 div.houfy-tmplates-section h1.oakmont {
   text-align: left;
+  font-size: 30px !important;
 }
 
 div.houfy-tmplates-section p {

@@ -1,0 +1,15 @@
+name = "houfy-uat-proxy"
+main = "workers/houfy-uat-proxy.js"
+compatibility_date = "2025-08-29"
+
+account_id = "34c3d57ed1b72bfcee734c13ddbeedaa"
+workers_dev = false
+
+# Routes for UAT environment
+routes = [
+  { pattern = "uat.skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" }
+]
+
+[vars]
+ENVIRONMENT = "uat"
+CDN_URL = "https://cdn.skyforestgetaway.com/public/"

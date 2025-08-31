@@ -1,0 +1,7 @@
+# Local Cloudflare creds
+.cloudflared/
+wrangler.dev.toml
+
+# Node
+node_modules/
+npm-debug.log*
