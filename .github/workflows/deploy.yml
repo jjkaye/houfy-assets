@@ -1,4 +1,4 @@
-name: Deploy Houfy Proxy
+name: Deploy Workers
 
 on:
   push:
@@ -9,22 +9,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Install Wrangler
-        run: npm install -g wrangler
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Deploy to UAT
+      - name: Deploy to Cloudflare (UAT)
         if: github.ref == 'refs/heads/uat'
-        run: wrangler deploy --config wrangler.uat.toml
+        run: npx wrangler deploy --config wrangler.uat.toml
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Deploy to Prod
+      - name: Deploy to Cloudflare (Prod)
         if: github.ref == 'refs/heads/main'
-        run: wrangler deploy --config wrangler.prod.toml
+        run: npx wrangler deploy --config wrangler.prod.toml
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
