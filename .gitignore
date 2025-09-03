@@ -11,4 +11,4 @@ public/js/bundle-*.js
 public/js/bundle-latest.txt
 
 # TMP
-.wrangler/
+.wrangler
