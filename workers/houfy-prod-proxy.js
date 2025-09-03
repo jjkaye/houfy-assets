@@ -55,7 +55,8 @@ Sitemap: https://skyforestgetaway.com/sitemap.xml
 
     // 🔹 Inject CSS + Fonts
     const injection = `
-<link rel="stylesheet" href="${env.CDN_URL}/houfy.css">
+<link rel="stylesheet" href="${env.CDN_URL}/css/houfy.css">
+<script src="${env.CDN_URL}/js/bundle.<hash>.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>console.log("✅ Prod Worker running — CSS + Fonts injected, URLs rewritten for SEO");</script>
     `;
