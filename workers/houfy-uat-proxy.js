@@ -37,6 +37,31 @@ export default {
       return new Response(`Failed to read upstream HTML: ${err.message}`, { status: 500 });
     }
 
+    let bundleName = "bundle.js"; // default fallback
+
+    try {
+      console.log("Fetching manifest from:", env.MANIFEST_URL);
+
+      const manifestResp = await fetch(env.MANIFEST_URL);
+      console.log("Manifest fetch status:", manifestResp.status);
+
+      if (manifestResp.ok) {
+        const manifest = await manifestResp.json();
+        console.log("Manifest content:", manifest);
+
+        if (manifest.bundle) {
+          bundleName = manifest.bundle;
+          console.log("✅ Using bundle from manifest:", bundleName);
+        } else {
+          console.warn("⚠️ No bundle key found in manifest, using fallback.");
+        }
+      } else {
+        console.error("❌ Manifest fetch failed with status:", manifestResp.status);
+      }
+    } catch (err) {
+      console.error("⚠️ Error loading manifest.json:", err);
+    }
+
     // Rewrite Houfy prod hostname → uat.skyforestgetaway.com
     body = body
     .replace(/https:\/\/skyforestgetaway\.houfy\.com/gi, "https://uat.skyforestgetaway.com")
@@ -44,11 +69,10 @@ export default {
     .replace(/https:\/\/www\.skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com");
 
     // Inject CSS + Google Fonts
-    //<script src="${env.CDN_URL}/js/bundle.<hash>.js" defer></script>
     const injection = `
 <!-- UAT Worker Injection -->
 <link rel="stylesheet" href="${env.CDN_URL}css/houfy.css">
-
+<script src="${env.CDN_URL}js/${bundleName}" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>console.log("✅ UAT Worker running — CSS + Fonts injected, URLs rewritten for UAT");</script>
 `;

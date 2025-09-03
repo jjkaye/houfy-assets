@@ -10,6 +10,11 @@ routes = [
   { pattern = "uat.skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" }
 ]
 
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
+
 [vars]
 ENVIRONMENT = "uat"
 CDN_URL = "https://cdn.skyforestgetaway.com/public/"
+MANIFEST_URL = "https://raw.githubusercontent.com/jjkaye/houfy-assets/main/public/js/manifest.json"

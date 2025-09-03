@@ -4,7 +4,7 @@
   "description": "Local dev environment for SkyforestGetaway with Houfy proxy",
   "main": "workers/houfy-dev-proxy.js",
   "scripts": {
-    "dev": "concurrently --kill-others -n worker,bs,tunnel,watch -c green,magenta,blue,yellow \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\" \"npm:build:watch\"",
+    "dev": "npm run build:js && concurrently --kill-others -n worker,bs,tunnel -c green,magenta,blue \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\"",
 
     "worker:local": "wrangler dev --port=8787 --config wrangler.dev.toml",
     "bs": "browser-sync start --config bs-config.js",
