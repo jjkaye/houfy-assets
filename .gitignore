@@ -5,3 +5,7 @@ wrangler.dev.toml
 # Node
 node_modules/
 npm-debug.log*
+
+# JS
+public/js/bundle-*.js
+public/js/bundle-latest.txt

@@ -44,9 +44,11 @@ export default {
     .replace(/https:\/\/www\.skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com");
 
     // Inject CSS + Google Fonts
+    //<script src="${env.CDN_URL}/js/bundle.<hash>.js" defer></script>
     const injection = `
 <!-- UAT Worker Injection -->
-<link rel="stylesheet" href="${env.CDN_URL}/houfy.css">
+<link rel="stylesheet" href="${env.CDN_URL}css/houfy.css">
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>console.log("✅ UAT Worker running — CSS + Fonts injected, URLs rewritten for UAT");</script>
 `;

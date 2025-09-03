@@ -3,21 +3,19 @@
   "version": "1.0.0",
   "description": "Local dev environment for SkyforestGetaway with Houfy proxy",
   "main": "workers/houfy-dev-proxy.js",
-"scripts": {
-  "dev": "concurrently --kill-others -n worker,bs,tunnel -c green,magenta,blue \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\"",
-  "dev:static": "concurrently --kill-others -n bs,tunnel -c magenta,blue \"npm:bs\" \"npm:tunnel\"",
+  "scripts": {
+    "dev": "concurrently --kill-others -n worker,bs,tunnel,watch -c green,magenta,blue,yellow \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\" \"npm:build:watch\"",
 
-  "bs": "browser-sync start --config bs-config.js",
-  "tunnel": "cloudflared tunnel --config ~/.cloudflared/config.yml run dev",
+    "worker:local": "wrangler dev --port=8787 --config wrangler.dev.toml",
+    "bs": "browser-sync start --config bs-config.js",
+    "tunnel": "cloudflared tunnel --config ~/.cloudflared/config.yml run dev",
 
-  "worker:local": "wrangler dev --port=8787 --config wrangler.dev.toml",
+    "build:js": "node build-scripts/build-js.js",
+    "build:watch": "chokidar 'src/**/*.js' -c 'npm run build:js'",
 
-  "deploy:uat": "wrangler deploy --config wrangler.uat.toml",
-  "deploy:prod": "wrangler deploy --config wrangler.prod.toml",
-
-  "tail:uat": "wrangler tail --config wrangler.uat.toml",
-  "tail:prod": "wrangler tail --config wrangler.prod.toml"
-},
+    "deploy:uat": "npm run build:js && wrangler deploy --config wrangler.uat.toml",
+    "deploy:prod": "npm run build:js && wrangler deploy --config wrangler.prod.toml"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jjkaye/houfy-assets.git"
@@ -26,8 +24,11 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.29.3",
+    "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
     "npm-run-all": "^4.1.5",
+    "terser": "^5.43.1",
+    "watch": "^1.0.2",
     "wrangler": "^3.90.0"
   }
 }

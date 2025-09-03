@@ -11,20 +11,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Deploy to Cloudflare (UAT)
+      - name: Build JS bundle
+        run: npm run build:js
+
+      - name: Read bundle name
+        id: bundle
+        run: echo "BUNDLE_NAME=$(cat public/js/bundle-latest.txt)" >> $GITHUB_ENV
+
+      - name: Substitute bundle name (UAT)
+        if: github.ref == 'refs/heads/uat'
+        run: |
+          sed -i "s|__BUNDLE_NAME__|$BUNDLE_NAME|g" workers/houfy-uat-proxy.js
+
+      - name: Substitute bundle name (Prod)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          sed -i "s|__BUNDLE_NAME__|$BUNDLE_NAME|g" workers/houfy-prod-proxy.js
+
+      - name: Deploy to UAT
         if: github.ref == 'refs/heads/uat'
         run: npx wrangler deploy --config wrangler.uat.toml
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Deploy to Cloudflare (Prod)
+      - name: Deploy to Prod
         if: github.ref == 'refs/heads/main'
         run: npx wrangler deploy --config wrangler.prod.toml
         env:

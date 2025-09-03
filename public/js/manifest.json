@@ -1,0 +1,8 @@
+{
+  "gitHash": "82a5082",
+  "bundle": "bundle.82a5082.js",
+  "scripts": [
+    "promo-banner.js",
+    "test.js"
+  ]
+}
