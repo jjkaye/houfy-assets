@@ -42,15 +42,24 @@ export default {
     try {
       console.log("Fetching manifest from:", env.MANIFEST_URL);
 
-      const manifestResp = await fetch(env.MANIFEST_URL);
+      const manifestResp = await fetch(env.MANIFEST_URL, {
+        cf: { cacheTtl: 0, cacheEverything: false }, // 🚫 no Cloudflare cache
+        headers: { "Cache-Control": "no-cache" }     // 🚫 no browser cache
+      });
+
       console.log("Manifest fetch status:", manifestResp.status);
 
       if (manifestResp.ok) {
-        const manifest = await manifestResp.json();
-        console.log("Manifest content:", manifest);
+        const manifestJson = await manifestResp.json();
 
-        if (manifest.bundle) {
-          bundleName = manifest.bundle;
+        // Clone with headers that prevent caching
+        const manifest = new Response(JSON.stringify(manifestJson), manifestResp);
+        manifest.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+        manifest.headers.set("Pragma", "no-cache");
+        manifest.headers.set("Expires", "0");
+
+        if (manifestJson.bundle) {
+          bundleName = manifestJson.bundle;
           console.log("✅ Using bundle from manifest:", bundleName);
         } else {
           console.warn("⚠️ No bundle key found in manifest, using fallback.");
@@ -72,7 +81,7 @@ export default {
     const injection = `
 <!-- UAT Worker Injection -->
 <link rel="stylesheet" href="${env.CDN_URL}css/houfy.css">
-<script src="${env.CDN_URL}js/${bundleName}" defer></script>
+<script src="${env.CDN_URL}js/${bundleName}?v=${Date.now()}" defer></script></body>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>console.log("✅ UAT Worker running — CSS + Fonts injected, URLs rewritten for UAT");</script>
 `;
