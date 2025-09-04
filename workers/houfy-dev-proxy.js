@@ -8,8 +8,8 @@ export default {
     }
 
     // ✅ Serve manifest.json directly
-    if (incomingUrl.pathname === "/manifest.json") {
-      return fetch("http://127.0.0.1:3000/js/manifest.json", { headers: request.headers });
+    if (incomingUrl.pathname === "/manifest-dev.json") {
+      return fetch("http://127.0.0.1:3000/js/manifest-dev.json", { headers: request.headers });
     }
 
     // Let BrowserSync serve static assets directly
@@ -46,7 +46,7 @@ export default {
       // ✅ Fetch manifest.json and inject its scripts
       let scriptTags = "";
       try {
-        const manifestResp = await fetch("http://127.0.0.1:3000/js/manifest.json");
+        const manifestResp = await fetch("http://127.0.0.1:3000/js/manifest-dev.json");
         const manifest = await manifestResp.json();
         scriptTags = manifest.scripts
           .map(file => `<script src="/js/${file}" defer></script>`)

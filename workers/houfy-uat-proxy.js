@@ -25,11 +25,9 @@ export default {
 
     const contentType = upstreamResp.headers.get("content-type") || "";
     if (!contentType.includes("text/html")) {
-      // passthrough for non-HTML (images, scripts, etc.)
-      return upstreamResp;
+      return upstreamResp; // passthrough for non-HTML
     }
 
-    // Read the HTML body
     let body;
     try {
       body = await upstreamResp.text();
@@ -37,53 +35,44 @@ export default {
       return new Response(`Failed to read upstream HTML: ${err.message}`, { status: 500 });
     }
 
-    let bundleName = "bundle.js"; // default fallback
+    let bundleName = "bundle.js"; // fallback
 
     try {
       console.log("Fetching manifest from:", env.MANIFEST_URL);
 
       const manifestResp = await fetch(env.MANIFEST_URL, {
-        cf: { cacheTtl: 0, cacheEverything: false }, // 🚫 no Cloudflare cache
-        headers: { "Cache-Control": "no-cache" }     // 🚫 no browser cache
+        cf: { cacheTtl: 0, cacheEverything: false }, // bypass Cloudflare cache
+        headers: { "Cache-Control": "no-cache" }     // bypass browser cache
       });
-
-      console.log("Manifest fetch status:", manifestResp.status);
 
       if (manifestResp.ok) {
         const manifestJson = await manifestResp.json();
-
-        // Clone with headers that prevent caching
-        const manifest = new Response(JSON.stringify(manifestJson), manifestResp);
-        manifest.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-        manifest.headers.set("Pragma", "no-cache");
-        manifest.headers.set("Expires", "0");
-
         if (manifestJson.bundle) {
           bundleName = manifestJson.bundle;
           console.log("✅ Using bundle from manifest:", bundleName);
         } else {
-          console.warn("⚠️ No bundle key found in manifest, using fallback.");
+          console.warn("⚠️ No bundle key in manifest, using fallback.");
         }
       } else {
-        console.error("❌ Manifest fetch failed with status:", manifestResp.status);
+        console.error("❌ Manifest fetch failed:", manifestResp.status);
       }
     } catch (err) {
       console.error("⚠️ Error loading manifest.json:", err);
     }
 
-    // Rewrite Houfy prod hostname → uat.skyforestgetaway.com
+    // Rewrite Houfy prod hostname → UAT domain
     body = body
-    .replace(/https:\/\/skyforestgetaway\.houfy\.com/gi, "https://uat.skyforestgetaway.com")
-    .replace(/https:\/\/skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com")
-    .replace(/https:\/\/www\.skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com");
+      .replace(/https:\/\/skyforestgetaway\.houfy\.com/gi, "https://uat.skyforestgetaway.com")
+      .replace(/https:\/\/skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com")
+      .replace(/https:\/\/www\.skyforestgetaway\.com/gi, "https://uat.skyforestgetaway.com");
 
-    // Inject CSS + Google Fonts
+    // Inject CSS + bundle + fonts
     const injection = `
 <!-- UAT Worker Injection -->
 <link rel="stylesheet" href="${env.CDN_URL}css/houfy.css">
-<script src="${env.CDN_URL}js/${bundleName}?v=${Date.now()}" defer></script></body>
+<script src="${env.CDN_URL}js/${bundleName}?v=${Date.now()}" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<script>console.log("✅ UAT Worker running — CSS + Fonts injected, URLs rewritten for UAT");</script>
+<script>console.log("✅ UAT Worker running — CSS + Fonts + Bundle injected, URLs rewritten for UAT");</script>
 `;
     body = body.replace(/<\/head\s*>/i, `${injection}\n</head>`);
 

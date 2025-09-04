@@ -9,6 +9,7 @@ npm-debug.log*
 # JS
 public/js/bundle-*.js
 public/js/bundle-latest.txt
+src/js/manifest-dev.json
 
 # TMP
 .wrangler
