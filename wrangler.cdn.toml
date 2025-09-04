@@ -1,0 +1,11 @@
+name = "cdn-worker"
+main = "workers/cdn-proxy.js"
+compatibility_date = "2025-09-03"
+
+account_id = "34c3d57ed1b72bfcee734c13ddbeedaa"
+workers_dev = false
+
+routes = [
+  { pattern = "cdn.skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" },
+  { pattern = "cdn-uat.skyforestgetaway.com/*", zone_name = "skyforestgetaway.com" }
+]
