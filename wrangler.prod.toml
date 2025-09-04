@@ -12,7 +12,9 @@ routes = [
 ]
 
 [vars]
+ENVIRONMENT = "prod"
 CDN_URL = "https://cdn.skyforestgetaway.com/public/"
+MANIFEST_URL = "https://raw.githubusercontent.com/jjkaye/houfy-assets/main/public/js/manifest.json"
 
 # 🔹 KV binding for sitemap.xml
 [[kv_namespaces]]

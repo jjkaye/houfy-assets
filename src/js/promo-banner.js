@@ -12,7 +12,7 @@
       },
       {
         id: "fall-deals",
-        message: "🍂 Fall escapes from $149/night",
+        message: "🍂 Fall escapes from $130/night",
         cta: "EXPLORE DATES",
         url: "/book"
       },
