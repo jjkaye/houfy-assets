@@ -16,5 +16,5 @@ enabled = true
 
 [vars]
 ENVIRONMENT = "uat"
-CDN_URL = "https://cdn.skyforestgetaway.com/public/"
-MANIFEST_URL = "https://raw.githubusercontent.com/jjkaye/houfy-assets/main/public/js/manifest.json"
+CDN_URL = "https://cdn-uat.skyforestgetaway.com/public/"
+MANIFEST_URL = "https://raw.githubusercontent.com/jjkaye/houfy-assets/uat/public/js/manifest.json"

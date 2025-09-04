@@ -4,7 +4,8 @@
   "description": "Local dev environment for SkyforestGetaway with Houfy proxy",
   "main": "workers/houfy-dev-proxy.js",
   "scripts": {
-    "dev": "npm run build:js && concurrently --kill-others -n worker,bs,tunnel -c green,magenta,blue \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\"",
+    "dev:manifest": "node build-scripts/build-dev-manifest.js",
+    "dev": "npm run dev:manifest && concurrently --kill-others -n worker,bs,tunnel -c green,magenta,blue \"npm:worker:local\" \"npm:bs\" \"npm:tunnel\"",
 
     "worker:local": "wrangler dev --port=8787 --config wrangler.dev.toml",
     "bs": "browser-sync start --config bs-config.js",
@@ -14,7 +15,7 @@
     "build:watch": "chokidar 'src/**/*.js' -c 'npm run build:js'",
 
     "deploy:uat": "npm run build:js && wrangler deploy --config wrangler.uat.toml",
-    "deploy:prod": "npm run build:js && wrangler deploy --config wrangler.prod.toml"
+    "deploy:prod": "wrangler deploy --config wrangler.prod.toml"
   },
   "repository": {
     "type": "git",
