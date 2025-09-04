@@ -14,8 +14,8 @@
     "build:js": "node build-scripts/build-js.js",
     "build:watch": "chokidar 'src/**/*.js' -c 'npm run build:js'",
 
-    "deploy:uat": "cross-env ENVIRONMENT=uat npm run build:js && wrangler deploy --config wrangler.uat.toml",
-    "deploy:prod": "cross-env ENVIRONMENT=prod wrangler deploy --config wrangler.prod.toml"
+    "deploy:uat": "npm run build:js && wrangler deploy --config wrangler.uat.toml",
+    "deploy:prod": "wrangler deploy --config wrangler.prod.toml"
   },
   "repository": {
     "type": "git",
