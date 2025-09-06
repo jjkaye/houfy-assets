@@ -1,6 +1,7 @@
 # Local Cloudflare creds
 .cloudflared/
 wrangler.dev.toml
+cloudflare-api-token.md
 
 # Node
 node_modules/
