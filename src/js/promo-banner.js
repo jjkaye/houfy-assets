@@ -109,7 +109,7 @@
     banner.id = "promo-banner";
     banner.innerHTML = `
       <span class="promo-text"></span>
-      <a class="promo-cta" target="_blank" rel="noopener"></a>
+      <a class="promo-cta"></a>
     `;
 
     if (nav && nav.parentNode) {
