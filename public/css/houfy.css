@@ -9,10 +9,6 @@
 @homepageURL    https://skyforestgetaway.com
 ==/UserStyle== */
 
-body {
-  background: green !important;
-}
-
 /* FONT DEFINITION */
 
 .jetbrains-mono-oakmont {
@@ -74,8 +70,9 @@ div.houfy-tmplates-section h3 {
   padding: 18px 0px !important;
 }
 
-/* PROMO BANNER */
-
+/* ===========================
+   PROMO BANNER
+   =========================== */
 #promo-banner {
   background: #6b6f2a; /* olive green */
   color: white;
@@ -83,8 +80,12 @@ div.houfy-tmplates-section h3 {
   font-size: 14px;
   text-align: center;
   padding: 12px 20px;
-  position: relative;
-  z-index: 1000;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001; /* above navbar */
 
   display: flex;
   justify-content: center;
@@ -136,6 +137,28 @@ div.houfy-tmplates-section h3 {
     transform: none;
   }
 }
+
+/* ===========================
+   STICKY NAV (namespaced)
+   =========================== */
+#skyforest-sticky-header {
+  position: fixed !important;
+  top: var(--promo-height, 0); /* offset dynamically if banner exists */
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #ffffff !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===========================
+   BODY OFFSET (for content)
+   =========================== */
+body {
+  /* Push content below banner + nav */
+  padding-top: calc(var(--promo-height, 0px) + var(--nav-height, 0px));
+}
+
 
 /* LISTING */
 
