@@ -1,4 +1,4 @@
-/* DEV MARKER 8/25 6:55 PM */
+/* DEV MARKER 7:39 */
 
 /* ==UserStyle==
 @name           Houfy Custom Styles
@@ -9,8 +9,18 @@
 @homepageURL    https://skyforestgetaway.com
 ==/UserStyle== */
 
-body {
-  background: green !important;
+.pswp,
+.modal {
+  z-index: 99999 !important;
+}
+
+/* Keep promo + nav below modals */
+#promo-banner {
+  z-index: 10001 !important;
+}
+
+#skyforest-sticky-header {
+  z-index: 10000 !important;
 }
 
 /* FONT DEFINITION */
@@ -74,68 +84,6 @@ div.houfy-tmplates-section h3 {
   padding: 18px 0px !important;
 }
 
-/* PROMO BANNER */
-
-#promo-banner {
-  background: #6b6f2a; /* olive green */
-  color: white;
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  text-align: center;
-  padding: 12px 20px;
-  position: relative;
-  z-index: 1000;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap; /* allows stacking */
-}
-
-#promo-banner .promo-text {
-  font-weight: 400;
-}
-
-#promo-banner .promo-cta {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fff;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#promo-banner .promo-cta:hover {
-  opacity: 0.85;
-}
-
-#promo-banner .promo-close {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* 🔹 Mobile breakpoint */
-@media (max-width: 600px) {
-  #promo-banner {
-    flex-direction: column; /* stack vertically */
-    gap: 4px;
-  }
-
-  #promo-banner .promo-cta {
-    display: block;
-  }
-
-  #promo-banner .promo-close {
-    top: 8px;
-    right: 8px;
-    transform: none;
-  }
-}
 
 /* LISTING */
 
