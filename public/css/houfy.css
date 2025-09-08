@@ -97,32 +97,31 @@ div.houfy-tmplates-section p {
 }
 
 /* ARTICLE */
-.article {
+.article,
+article {
   max-width: 768px;
   margin: auto !important;
   font-size: 16px;
   line-height: 30px;
 }
 
+article header,
 article.hero {
   text-align: center !important;
 }
 
-.article.hero h1 {
+.article.hero h1,
+article header h1 {
   margin: 30px 0px !important;
 }
 
-.article.hero p {
+.article.hero p,
+article header p {
   padding: 0px;
 }
 
-.article a {
-  color: #df9518 !important;
-  font-weight: 400;
-  text-decoration: underline;
-}
-
-.article time {
+.article time,
+article time {
   font-size: 14px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -133,33 +132,65 @@ article.hero {
 
 /* General UL/OL Styling Inside Article */
 .article ul,
-.article ol {
+.article ol,
+article ul,
+article ol {
   margin: 1.25rem 0;
   padding-left: 1.5rem;
-  color: #374151;
   /* subtle dark gray */
   line-height: 1.6;
 }
 
+article section#faqs dl {
+  padding-top: 2rem !important;
+}
+
+article section#faqs dd {
+  padding-bottom: 2rem !important;
+}
+
+article section#faqs dt,
+section#final-faqs p strong {
+  font-weight: bold !important;
+}
+
+article section#faqs dt,
+article section#faqs dd {
+  margin: .5rem 0 !important;
+  line-height: 1.6 !important;
+}
+
 /* Bullets for unordered lists */
-.article ul {
+.article ul,
+article ul {
   list-style-type: disc;
 }
 
 /* Numbers for ordered lists */
-.article ol {
+.article ol,
+article ol {
   list-style-type: decimal;
 }
 
 /* List Item Styling */
-.article li {
+.article li,
+article li {
   margin-bottom: 0.5rem;
   padding-left: 0.25rem;
 }
 
 /* Optional: Emphasize first word or phrase */
-.article li strong:first-child {
+.article li strong:first-child,
+article li strong:first-child {
   color: #111;
+}
+
+.article a,
+article a,
+.houfy-tmplates-section a {
+  color: #df9518 !important;
+  font-weight: 400;
+  text-decoration: underline;
 }
 
 /* Subtle Table of Contents */
@@ -178,13 +209,15 @@ div.houfy-tmplates-section .toc-wrapper h3 {
   margin-bottom: 1rem;
 }
 
+div.houfy-tmplates-section .toc-wrapper li a {
+  color: #df9518 !important;
+  font-weight: 400;
+}
+
 div.houfy-tmplates-section .toc {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-div.houfy-tmplates-section .toc a {
 }
 
 div.houfy-tmplates-section .toc li {
