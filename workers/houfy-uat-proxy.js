@@ -1,3 +1,6 @@
+// houfy-uat-proxy.js
+import { stagingPreflight, stagingHarden } from "./lib/stagingGuard.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -8,6 +11,10 @@ export default {
       return new Response("Forbidden: wrong domain", { status: 403 });
     }
 
+    // 🔒 Staging guard preflight (blocks bots via Basic Auth, serves robots.txt, kills sitemaps, optional IP allowlist)
+    const pre = await stagingPreflight(request, env);
+    if (pre) return pre;
+
     // Proxy everything → Houfy origin
     url.hostname = "skyforestgetaway.houfy.com";
 
@@ -16,23 +23,32 @@ export default {
       upstreamResp = await fetch(url.toString(), {
         headers: {
           ...Object.fromEntries(request.headers),
-          "Host": "skyforestgetaway.com"
-        }
+          "Host": "skyforestgetaway.com",
+        },
       });
     } catch (err) {
-      return new Response(`Upstream fetch failed: ${err.message}`, { status: 502 });
+      return stagingHarden(
+        new Response(`Upstream fetch failed: ${err.message}`, { status: 502 }),
+        request,
+        env
+      );
     }
 
     const contentType = upstreamResp.headers.get("content-type") || "";
     if (!contentType.includes("text/html")) {
-      return upstreamResp; // passthrough for non-HTML
+      // Passthrough for non-HTML, but still harden (noindex, no-cache, security headers)
+      return stagingHarden(upstreamResp, request, env);
     }
 
     let body;
     try {
       body = await upstreamResp.text();
     } catch (err) {
-      return new Response(`Failed to read upstream HTML: ${err.message}`, { status: 500 });
+      return stagingHarden(
+        new Response(`Failed to read upstream HTML: ${err.message}`, { status: 500 }),
+        request,
+        env
+      );
     }
 
     let bundleName = "bundle.js"; // fallback
@@ -42,7 +58,7 @@ export default {
 
       const manifestResp = await fetch(env.MANIFEST_URL, {
         cf: { cacheTtl: 0, cacheEverything: false }, // bypass Cloudflare cache
-        headers: { "Cache-Control": "no-cache" }     // bypass browser cache
+        headers: { "Cache-Control": "no-cache" },    // bypass browser cache
       });
 
       if (manifestResp.ok) {
@@ -76,12 +92,15 @@ export default {
 `;
     body = body.replace(/<\/head\s*>/i, `${injection}\n</head>`);
 
-    return new Response(body, {
+    // Return HTML and let the guard add noindex/security/canonical headers + meta
+    const htmlResp = new Response(body, {
       status: upstreamResp.status,
       headers: {
         ...Object.fromEntries(upstreamResp.headers),
-        "content-type": "text/html; charset=UTF-8"
-      }
+        "content-type": "text/html; charset=UTF-8",
+      },
     });
-  }
+
+    return stagingHarden(htmlResp, request, env);
+  },
 };

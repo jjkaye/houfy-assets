@@ -76,7 +76,9 @@ Sitemap: https://skyforestgetaway.com/sitemap.xml
     let body = await upstreamResp.text();
 
     // 🔹 Rewrite Houfy subdomain → your domain (SEO critical)
-    body = body.replace(/https:\/\/skyforestgetaway\.houfy\.com/gi, "https://skyforestgetaway.com");
+    body = body
+      .replace(/https:\/\/skyforestgetaway\.houfy\.com/gi, "https://skyforestgetaway.com")
+      .replace(/https:\/\/www\.skyforestgetaway\.com/gi, "https://skyforestgetaway.com");
 
     // 🔹 Inject CSS + Fonts
     const injection = `
