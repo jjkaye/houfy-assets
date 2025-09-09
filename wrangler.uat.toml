@@ -18,3 +18,9 @@ enabled = true
 ENVIRONMENT = "uat"
 CDN_URL = "https://cdn-uat.skyforestgetaway.com/public/"
 MANIFEST_URL = "https://raw.githubusercontent.com/jjkaye/houfy-assets/uat/public/js/manifest.json"
+
+# Staging guard controls
+REQUIRE_AUTH = "true"
+FORCE_NOINDEX = "true"
+SERVE_ROBOTS = "true"
+CANONICAL_BASE = "https://skyforestgetaway.com"
