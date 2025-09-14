@@ -86,6 +86,10 @@ Sitemap: https://skyforestgetaway.com/sitemap.xml
 <script src="${env.CDN_URL}js/${bundleName}?v=${Date.now()}" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>console.log("✅ Prod Worker running — CSS + Fonts injected, URLs rewritten for SEO");</script>
+<script>
+  window.CDN_URL = "${env.CDN_URL}";
+  console.log("✅ CDN_URL available to client:", window.CDN_URL);
+</script>
     `;
 
     body = body.replace(/<\/head\s*>/i, `${injection}\n</head>`);

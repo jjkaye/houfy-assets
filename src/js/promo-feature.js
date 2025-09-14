@@ -120,8 +120,18 @@
       return path.split("/").pop();
     },
 
-    init: async (jsonUrl = "/js/promo-feature.json") => {
+    resolveJsonUrl: () => {
+      if (typeof window.CDN_URL !== "undefined" && window.CDN_URL) {
+        return `${window.CDN_URL.replace(/\/$/, "")}/js/promo-feature.json`;
+      }
+      return "/js/promo-feature.json";
+    },
+
+    init: async () => {
       window.Skyforest.PromoFeature.injectCSS();
+
+      const jsonUrl = window.Skyforest.PromoFeature.resolveJsonUrl();
+      console.log("📂 PromoFeature loading JSON from:", jsonUrl);
 
       const slug = window.Skyforest.PromoFeature.getSlug();
       try {
