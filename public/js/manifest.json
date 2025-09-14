@@ -1,9 +1,10 @@
 {
-  "gitHash": "496514f",
-  "bundle": "bundle.496514f.js",
+  "gitHash": "bfcb863",
+  "bundle": "bundle.bfcb863.js",
   "scripts": [
     "mobile-nav-reorder.js",
     "promo-banner.js",
+    "promo-feature.js",
     "sticky-header.js"
   ]
 }
